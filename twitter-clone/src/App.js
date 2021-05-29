@@ -4,6 +4,7 @@ import {
   Button
 } from "@chakra-ui/react"
 import {Auth} from "./Auth";
+import {Monsters} from "./Monsters";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Heading>
       Welcome to the Twitter Clone
     </Heading>
+    <Monsters />
     <Button onClick={() => logout()}>Log Out</Button>
 
     </Container>

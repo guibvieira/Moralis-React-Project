@@ -60,6 +60,4 @@ export const Auth = () => {
     <Text textAlign="center"><em>Or</em></Text>
     <Login/>
     </Stack>
-
-        
 }
