@@ -1,5 +1,5 @@
 import {useMoralis} from "react-moralis";
-import { Container, Heading, Box } from "@chakra-ui/layout";
+import { Container, Heading, Stack } from "@chakra-ui/layout";
 import {
   Button
 } from "@chakra-ui/react"
@@ -14,18 +14,19 @@ function App() {
   if(isAuthenticated) {
     return (<Container>
     <Heading>
-      Welcome to the Twitter Clone
+      Welcome to the Monster Factory
     </Heading>
+    <Stack spacing="24px">
     <Monsters />
     <Button onClick={() => logout()}>Log Out</Button>
-
+    </Stack>
     </Container>
     )
   }
   return (
     <Container>
       <Heading mb={6} textAlign="center">
-      Twitter Clone
+      Monster Factory
     </Heading>
       <Auth />
       </Container>

@@ -44,6 +44,7 @@ export const Monsters = () => {
     const [name, setName] = useState("");
     const [health, setHealth] = useState(0);
     const [strength, setStrength] = useState(0);
+    const [monsterNames, setMonsterNames] = useState("");
 
     
     const defineNewMonsters = async (name, health, strength) => {
@@ -55,6 +56,15 @@ export const Monsters = () => {
 
         await monster.save();
         return monster;
+    }
+
+    const getMonsters = async () => {
+        console.log('names query', monsterNames.split(",").map(item => item.trim()));
+        const namesQuery =  monsterNames.split(",").map(item => item.trim());
+        const query = new Moralis.Query("Monsters");
+        query.containedIn("name", namesQuery);
+        const monsters = await query.find();
+        console.log('monsters', monsters);
     }
 
     const getFirstMonster = async () => {
@@ -70,6 +80,9 @@ export const Monsters = () => {
         <Input placeholder="Monster Health" value={health} onChange={(event) => setHealth(event.currentTarget.value)}></Input>
         <Input  placeholder="Monster Strength" value={strength} onChange={(event) => setStrength(event.currentTarget.value)}></Input>
         <Button onClick={() => defineNewMonsters(name, health, strength)}>Create Monster</Button>
+        <Input  placeholder="Insert Monster Names Separated By Comma" value={monsterNames} onChange={(event) => setMonsterNames(event.currentTarget.value)}></Input>
+        <Button onClick={() => getMonsters()}>Get Monsters</Button>
+
         </Stack>
 
         
